@@ -1,0 +1,47 @@
+float resultado;
+int a;
+float b;
+string c;
+
+a = 5;
+b = 2.5;
+c = "X";
+
+resultado = 10 + a * b;
+printf(resultado);
+
+int contador;
+contador = 3;
+
+while (contador) { 
+    printf(contador);
+    contador = contador - 1;
+}
+
+printf(contador); 
+
+
+int x;
+x = 5;
+int y;
+y = 10;
+
+if (x) { 
+    printf(x); 
+} else {
+    printf(y); 
+}
+
+x = 0;
+
+if (x) { 
+    printf(x); 
+} else {
+    printf(y); 
+}
+
+int idade;
+
+scanf(idade); 
+printf(idade);
+

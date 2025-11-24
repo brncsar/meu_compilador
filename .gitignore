@@ -1,0 +1,5 @@
+# Arquivos gerados pelo Java (bytecode)
+*.class
+
+# Arquivos temporários e de configuração do IDE (VS Code, etc.)
+.DS_Store
