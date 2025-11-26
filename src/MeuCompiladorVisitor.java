@@ -1,11 +1,8 @@
-// src/MeuCompiladorVisitor.java
-
-
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 
-// Importa classes ANTLR (ajuste o prefixo 'linguagem.' se você não usou pacote ou usou outro)
+// Importa classes ANTLR (ajuste o prefixo 'linguagem.')
 import linguagem.MinhaLinguagemBaseVisitor; 
 import linguagem.MinhaLinguagemParser;     
 
@@ -27,12 +24,12 @@ public class MeuCompiladorVisitor extends MinhaLinguagemBaseVisitor<Object> {
         }
     }
 
-    // --- LÓGICA DO COMPILADOR: VISITA À DECLARAÇÃO ---
+    //  LÓGICA DO COMPILADOR: VISITA À DECLARAÇÃO 
     @Override
 public Object visitDeclaracao(MinhaLinguagemParser.DeclaracaoContext ctx) {
     // 1. Capturar informações da regra (Nome e Tipo)
     String nomeVar = ctx.ID().getText();  
-    // CORREÇÃO: Usa ctx.tipo() para acessar a sub-regra 'tipo'
+    // Usa ctx.tipo() para acessar a sub-regra 'tipo'
     String tipoToken = ctx.tipo().getText();  
     Tipo tipo = stringParaTipo(tipoToken); // Seu método auxiliar
 
@@ -233,10 +230,11 @@ public Object visitDeclaracao(MinhaLinguagemParser.DeclaracaoContext ctx) {
     public Valor visitVariavel(MinhaLinguagemParser.VariavelContext ctx) {
         String nomeVar = ctx.ID().getText();
 
-        if (!tabelaSimbolos.containsKey(nomeVar)) {
-            System.err.println("ERRO SEMÂNTICO: Variável '" + nomeVar + "' não declarada.");
-            return new Valor(Tipo.INVALIDO, null);
+        if(!tabelaSimbolos.containsKey(nomeVar)) {
+        // Substitua a linha 'return new Valor(Tipo.INVALIDO, ...)' por:
+        throw new SemanticError("Variável '" + nomeVar + "' não declarada."); 
         }
+
 
         Simbolo simbolo = tabelaSimbolos.get(nomeVar);
         
